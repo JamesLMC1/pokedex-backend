@@ -30,10 +30,10 @@ const swaggerOptions = {
       description: 'API REST para consultar información de Pokémon almacenada en Supabase.',
     },
     servers: [
-      {
-        url: 'http://localhost:3000',
-        description: 'Servidor local',
-      },
+        {
+            url: process.env.SERVER_URL || 'http://localhost:3000',
+            description: 'Servidor',
+        },
     ],
     components: {
       schemas: {
