@@ -9,11 +9,14 @@ app.use(cors());
 app.use(express.json());
 
 // =============================================
-// SUPABASE
+// SUPABASE — reemplaza con tus credenciales
+// Settings → API en supabase.com
 // =============================================
+require('dotenv').config();
+
 const supabase = createClient(
-  'https://XXXX.supabase.co',  // tu Project URL
-  'tu-anon-key'                 // tu anon public key
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_KEY
 );
 
 // =============================================
@@ -38,52 +41,20 @@ const swaggerOptions = {
         Pokemon: {
           type: 'object',
           properties: {
-            id: {
-              type: 'integer',
-              example: 25,
-            },
-            nombre: {
-              type: 'string',
-              example: 'pikachu',
-            },
-            altura: {
-              type: 'number',
-              example: 4,
-              description: 'Altura en decímetros',
-            },
-            peso: {
-              type: 'number',
-              example: 60,
-              description: 'Peso en hectogramos',
-            },
-            imagen_frontal: {
-              type: 'string',
-              example: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
-            },
-            imagen_posterior: {
-              type: 'string',
-              example: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/25.png',
-            },
-            imagen_shiny: {
-              type: 'string',
-              example: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/25.png',
-            },
-            tipos: {
-              type: 'array',
-              items: {
-                type: 'string',
-              },
-              example: ['electric'],
-            },
+            id:               { type: 'integer', example: 25 },
+            nombre:           { type: 'string',  example: 'pikachu' },
+            altura:           { type: 'number',  example: 4,  description: 'En decímetros' },
+            peso:             { type: 'number',  example: 60, description: 'En hectogramos' },
+            imagen_frontal:   { type: 'string',  example: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png' },
+            imagen_posterior: { type: 'string',  example: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/25.png' },
+            imagen_shiny:     { type: 'string',  example: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/25.png' },
+            tipos:            { type: 'array', items: { type: 'string' }, example: ['electric'] },
           },
         },
         Error: {
           type: 'object',
           properties: {
-            error: {
-              type: 'string',
-              example: 'Pokémon no encontrado',
-            },
+            error: { type: 'string', example: 'Pokémon no encontrado' },
           },
         },
       },
