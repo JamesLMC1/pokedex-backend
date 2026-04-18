@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
 const { createClient } = require('@supabase/supabase-js');
@@ -9,11 +11,8 @@ app.use(cors());
 app.use(express.json());
 
 // =============================================
-// SUPABASE — reemplaza con tus credenciales
-// Settings → API en supabase.com
+// SUPABASE
 // =============================================
-require('dotenv').config();
-
 const supabase = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_KEY
@@ -174,7 +173,7 @@ app.get('/api/pokemon/:nombre', async (req, res) => {
 // =============================================
 // INICIAR SERVIDOR
 // =============================================
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
   console.log(`📚 Documentación en  http://localhost:${PORT}/api/docs`);
