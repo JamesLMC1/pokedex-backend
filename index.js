@@ -59,7 +59,7 @@ const swaggerOptions = {
       },
     },
   },
-  apis: ['./index.js'],
+  apis: [__filename],
 };
 
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
