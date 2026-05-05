@@ -1,2 +1,6 @@
 node_modules
 .env
+source
+upload-images.js
+schema.sql
+openapi.json
