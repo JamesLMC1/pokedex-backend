@@ -1,0 +1,5 @@
+node_modules/
+.git/
+.env
+openapi.json
+schema.sql
